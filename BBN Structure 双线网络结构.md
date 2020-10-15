@@ -1,7 +1,7 @@
 # BBN Structure 双线网络结构
 [ Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition]()
 [Github源码]( https://github.com/Megvii-Nanjing/BBN)
-![image-20201015114904048](D:\Users\Sangfor\Desktop\Articles\Resource\image-20201015114904048.png)
+![image-20201015114904048](Resource\image-20201015114904048.png)
 __两条线各自对不同采样方式的样本进行特征学习和分类学习，最后汇总到累积学习结构中__
 
 >&emsp;_Concretely, we design two branches for representation learning and classifier learning, termed “conventional learning branch” and “re-balancing branch”,respectively. Both branches use the same residual network structure and share all the weights except for the last residual block. 
