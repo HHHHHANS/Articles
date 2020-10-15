@@ -53,8 +53,6 @@ __两条线各自对不同采样方式的样本进行特征学习和分类学习
 
 
 
-#### Reference
-
 [pic1]:https://github.com/HHHHHANS/Articles/blob/main/Resource/BNN-P%20of%20classes.png?raw=true	"类别概率"
 [pic2]:https://github.com/HHHHHANS/Articles/blob/main/Resource/BNN-w%20of%20classes.png?raw=true	"类别权重"
 [pic3]:https://github.com/HHHHHANS/Articles/blob/main/Resource/BNN-structure.png?raw=Ture	"总体网络结构"
