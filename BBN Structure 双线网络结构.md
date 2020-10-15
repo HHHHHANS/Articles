@@ -1,7 +1,7 @@
 # BBN Structure 双线网络结构
 [ Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition]()
 [Github源码]( https://github.com/Megvii-Nanjing/BBN)
-![image-20201015114904048](C:\Users\Sangfor\AppData\Roaming\Typora\typora-user-images\image-20201015114904048.png)
+![image-20201015114904048](D:\Users\Sangfor\Desktop\Articles\Resource\image-20201015114904048.png)
 __两条线各自对不同采样方式的样本进行特征学习和分类学习，最后汇总到累积学习结构中__
 
 >&emsp;_Concretely, we design two branches for representation learning and classifier learning, termed “conventional learning branch” and “re-balancing branch”,respectively. Both branches use the same residual network structure and share all the weights except for the last residual block. 
@@ -19,9 +19,9 @@ __两条线各自对不同采样方式的样本进行特征学习和分类学习
 2. 通过采样概率，随机选定某类样本
 3. 通过选定的某类（标签），均匀采样出一个样本
 
-> <img src="C:\Users\Sangfor\AppData\Roaming\Typora\typora-user-images\image-20201015114953008.png" alt="image-20201015114953008" style="zoom:80%;" />
+> <img src="D:\Users\Sangfor\Desktop\Articles\Resource\image-20201015114953008.png" alt="image-20201015114953008" style="zoom:80%;" />
 >
-> <img src="C:\Users\Sangfor\AppData\Roaming\Typora\typora-user-images\image-20201015114924426.png" alt="image-20201015114924426" style="zoom:80%;" />
+> <img src="D:\Users\Sangfor\Desktop\Articles\Resource\image-20201015114924426.png" alt="image-20201015114924426" style="zoom:80%;" />
 >
 > Ni为某类（标签）的样本数
 > Nmax为规模最大的类（标签）的样本数
@@ -39,7 +39,7 @@ __两条线各自对不同采样方式的样本进行特征学习和分类学习
 
 ## 积学习层-Cumulative learning
 
-><img src="C:\Users\Sangfor\AppData\Roaming\Typora\typora-user-images\image-20201015115034224.png" alt="image-20201015115034224" style="zoom: 67%;" />
+><img src="D:\Users\Sangfor\Desktop\Articles\Resource\image-20201015115034224.png" alt="image-20201015115034224" style="zoom: 67%;" />
 
 &emsp; 在积学习层，设置一个会动态调整大小的α参数，表示不同epoch时候对两边的特征向量分配的权重大小，即分配不同的注意力。**因为α是递减的，因此模型的整体训练重心会从head-info转向tail-info。**
 
