@@ -23,6 +23,7 @@ __两条线各自对不同采样方式的样本进行特征学习和分类学习
 >
 > <img src="D:\Users\Sangfor\Desktop\Articles\Resource\image-20201015114924426.png" alt="image-20201015114924426" style="zoom:80%;" />
 >
+> ![](https://github.com/HHHHHANS/Articles/blob/main/Resource/image-20201015114924426.png)
 > Ni为某类（标签）的样本数
 > Nmax为规模最大的类（标签）的样本数
 
