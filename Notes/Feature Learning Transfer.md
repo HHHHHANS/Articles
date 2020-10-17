@@ -71,6 +71,8 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 		固定博特征提取器Enc和解码器Dec的权重，计算头样本的协方差矩阵**Cov-M**，**对头部样本batch训练**，再**对尾部样本batch进行训练**，将**Cov-M**应用到尾部数据中进行transfer操作，获得尾部样本的新特征空间，**对尾部样本的新特征向量训练**。这个过程目的是修正分类器的决策边界，即**让分类器学习尾部样本经过迁移的新特征向量**。
 	+ stage2：Compact Feature Learning
 		固定全连接FC层权重信息，在BP过程中直接更新R和Enc的权重，即**博特征提起器和精特征提取器识别imput中更加紧凑的特征**
+		
+
 [pic1]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-classifier%20weight%20norm.png?raw=true "头部和尾部样本分布"
 [pic2]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-wight%20norm%20bias%20and%20new%20feature%20sapace%20.png?raw=true "扩大特征空间"
 [pic3]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-%20overview.png?raw=true "总体结构"
