@@ -53,7 +53,8 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 	![滤网器][pic8]
 
 + FC层分类
-	FC层损失函数 ![FC层损失函数][]
+	FC层损失函数 ![FC层损失函数][pic9]
+	FC层权重![FC-weight][pic13]![FC-weights' domain][pic14]
 	> *Note that softmax loss is scale-dependent where the loss can be made arbitrarily small by scaling the norm of the weights wj or features f.*
 	>
 	
@@ -75,9 +76,11 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 [pic10]:"损失函数正则项"
 [pic11]:"损失函数各项系数"
 [pic12]:"总损失函数"
-[pic13]:
-[pic14]:
-[pic15]:
-[pic16]:
-[pic17]:
+[pic13]:"FC-weights"
+[pic14]: "FC-weights'domain"
+[pic15]:"gik-of-flipped-imput-x"
+[pic16]:"Q"
+[pic17]:"V"
+[pic18]:"algorithm"
+[pic19]:"two-stages"
 [refer1]: F. Wang, X. Xiang, J. Cheng, and A. L. Yuille. Normface: l 2 hypersphere embedding for face verification. arXiv preprint arXiv:1704.06369, 2017.
