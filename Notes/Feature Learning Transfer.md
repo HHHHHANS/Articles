@@ -68,7 +68,7 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 		固定全连接FC层权重信息，在BP过程中直接更新R和Enc的权重，即**博特征提起器和精特征提取器识别imput中更加紧凑的特征**
 [pic1]: "头部和尾部样本分布"
 [pic2]:"扩大特征空间"
-[pic3]:"总体结构"
+[pic3]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-%20overview.png?raw=true "总体结构"
 [pic4]:"重建损失"
 [pic5]: "编码式"
 [pic6]: "解码式"
