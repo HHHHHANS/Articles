@@ -57,7 +57,10 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 	![滤网器][pic8]
 
 + FC层分类
+	
 	FC层损失函数 ![FC层损失函数][pic9]
+	
+	
 	FC层权重![FC-weight][pic13] ![FC-weights'domain][pic14]
 	
 	> *Note that softmax loss is scale-dependent where the loss can be made arbitrarily small by scaling the norm of the weights wj or features f.*
