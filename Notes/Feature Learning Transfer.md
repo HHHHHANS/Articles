@@ -40,50 +40,55 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 ![总体结构][pic3]
 #### 总体结构解析
 + 输入 **x**
-	![输入x][pic7]
+	![输入][pic5]
+	
 + 特征提取 **Enc** - **g**
-	![编码式][pic5]
+	![编码式][pic6]
 	**Enc**对输入的图片进行计算得到**g**：rich features space博特征空间
+	
 + 解码并重建 **Enc**-**Dec**-**Reconstruction** 
-	逐像素重建损失函数![重建损失][pic4]	其中**x'**为![解码式][pic6]
+	逐像素重建损失函数![重建损失][pic4]	
+	其中**x'** = ![解码式][pic6]
 	>*The reconstruction loss allows g to contain diverse nonidentity variations such as pose, expression, and lighting. Therefore, we denote g as the rich feature space.* 
 	>*该损失函数可以使**g**获得丰富的非标识性的变化分布例如姿势，表情和光线，因此称**g**为博特征空间*
+	
 + 滤网器 **R** filtering network
 	生成判别性标识特征**f**， 包括线性层\*1+去卷积层\*2+卷积层\*2+线性层\*1
 	![滤网器][pic8]
 
 + FC层分类
 	FC层损失函数 ![FC层损失函数][pic9]
-	FC层权重![FC-weight][pic13]![FC-weights' domain][pic14]
+	FC层权重![FC-weight][pic13]
+	![FC-weights'domain][pic14]
+	
 	> *Note that softmax loss is scale-dependent where the loss can be made arbitrarily small by scaling the norm of the weights wj or features f.*
-	>
 	
 	+ 可以单独对weight norm 或 features 进行正则化，或同时对两者进行标准化[refer1]
 #### 训练流程
 1. 给定一个训练数据集，包含头部样本和尾部样本，使用![总损失函数][pic12]并预先训练所有模块：Enc，Dec，R，FC
-2. 开始在每个iteration中交替进行stage1和stage2
+2. 进而在每个iteration中交替进行stage1和stage2
 	+ stage1：Decision Boundary Reshape（依次对三个batch 进行训练）
 		固定博特征提取器Enc和解码器Dec的权重，计算头样本的协方差矩阵**Cov-M**，**对头部样本batch训练**，再**对尾部样本batch进行训练**，将**Cov-M**应用到尾部数据中进行transfer操作，获得尾部样本的新特征空间，**对尾部样本的新特征向量训练**。这个过程目的是修正分类器的决策边界，即**让分类器学习尾部样本经过迁移的新特征向量**。
 	+ stage2：Compact Feature Learning
 		固定全连接FC层权重信息，在BP过程中直接更新R和Enc的权重，即**博特征提起器和精特征提取器识别imput中更加紧凑的特征**
-[pic1]: "头部和尾部样本分布"
-[pic2]:"扩大特征空间"
+[pic1]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-classifier%20weight%20norm.png?raw=true "头部和尾部样本分布"
+[pic2]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-wight%20norm%20bias%20and%20new%20feature%20sapace%20.png?raw=true "扩大特征空间"
 [pic3]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-%20overview.png?raw=true "总体结构"
-[pic4]:"重建损失"
-[pic5]: "编码式"
-[pic6]: "解码式"
-[pic7]: "输入x"
-[pic8]: "滤网器"
-[pic9]: "fc损失"
-[pic10]:"损失函数正则项"
-[pic11]:"损失函数各项系数"
-[pic12]:"总损失函数"
-[pic13]:"FC-weights"
-[pic14]: "FC-weights'domain"
-[pic15]:"gik-of-flipped-imput-x"
-[pic16]:"Q"
-[pic17]:"V"
+[pic4]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-Loss%20of%20Reconstruction.png?raw=true	"重建损失"
+[pic5]: https://raw.githubusercontent.com/HHHHHANS/Articles/main/Resource/Images/FTL-Enc.png	"编码式 "
+[pic6]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-Dec.png?raw=true	"解码式"
+[pic7]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-input%20x.png?raw=true "输入x"
+[pic8]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-filter%20network.png?raw=true "滤网器"
+[pic9]: https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-FC%20losses.png?raw=true "fc损失"
+[pic10]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-FC%20regularization.png?raw=true "损失函数正则项"
+[pic11]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-default%20coefficients.png?raw=true  "损失函数各项系数"
+[pic12]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-full%20losses.png?raw=true "总损失函数"
+[pic13]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-FC%20Weight.png?raw=true "FC-weights"
+[pic14]: https://raw.githubusercontent.com/HHHHHANS/Articles/main/Resource/Images/FTL-FC%20Weights'%20domian.png "FC-weights'domain"
+[pic15]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-gik%20of%20flipped%20x.png?raw=true "gik-of-flipped-imput-x"
+[pic16]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-Q.png?raw=true "Q"
+[pic17]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-V.png?raw=true "V"
 [pic18]:"algorithm"
-[pic19]:"two-stages"
-[pic20]:"ci"
+[pic19]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-two%20stages.png?raw=true "two-stages"
+[pic20]:https://github.com/HHHHHANS/Articles/blob/main/Resource/Images/FTL-ci.png?raw=true "ci"
 [refer1]: F. Wang, X. Xiang, J. Cheng, and A. L. Yuille. Normface: l 2 hypersphere embedding for face verification. arXiv preprint arXiv:1704.06369, 2017.
