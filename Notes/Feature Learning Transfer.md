@@ -23,7 +23,7 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 ## 解析
 ### 1. The Proposed Approach
 + 使用UR数据（尾部）进行训练的局限性
-	![][pic1]
+	![头部和尾部样本分布][pic1]
 	+ classifier weight norms：在最后一层全连接层中，由于头部数据的样本量充足，在BP阶段有更多的机会被更新。常用对策：
 		+ re-sampling 重采样
 		+ weight normalization 权重标准化
@@ -38,7 +38,7 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 本文FTL框架使用了从头部数据的迁移学习来增加尾部数据的类内方差
 
 ![总体结构][pic3]
-##### 总体结构解析
+#### 总体结构解析
 + 输入 **x**
 	![输入x][pic7]
 + 特征提取 **Enc** - **g**
@@ -59,12 +59,14 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 	>
 	
 	+ 可以单独对weight norm 或 features 进行正则化，或同时对两者进行标准化[refer1]
-
-
-
-
-
-[pic1]: 
+#### 训练流程
+1. 给定一个训练数据集，包含头部样本和尾部样本，使用![总损失函数][pic12]并预先训练所有模块：Enc，Dec，R，FC
+2. 开始在每个iteration中交替进行stage1和stage2
+	+ stage1：Decision Boundary Reshape（依次对三个batch 进行训练）
+		固定博特征提取器Enc和解码器Dec的权重，计算头样本的协方差矩阵**Cov-M**，**对头部样本batch训练**，再**对尾部样本batch进行训练**，将**Cov-M**应用到尾部数据中进行transfer操作，获得尾部样本的新特征空间，**对尾部样本的新特征向量训练**。这个过程目的是修正分类器的决策边界，即**让分类器学习尾部样本经过迁移的新特征向量**。
+	+ stage2：Compact Feature Learning
+		固定全连接FC层权重信息，在BP过程中直接更新R和Enc的权重，即**博特征提起器和精特征提取器识别imput中更加紧凑的特征**
+[pic1]: "头部和尾部样本分布"
 [pic2]:"扩大特征空间"
 [pic3]:"总体结构"
 [pic4]:"重建损失"
@@ -83,4 +85,5 @@ Paper:[Feature Transfer Learning for Face Recognition with Under-Represented Dat
 [pic17]:"V"
 [pic18]:"algorithm"
 [pic19]:"two-stages"
+[pic20]:"ci"
 [refer1]: F. Wang, X. Xiang, J. Cheng, and A. L. Yuille. Normface: l 2 hypersphere embedding for face verification. arXiv preprint arXiv:1704.06369, 2017.
