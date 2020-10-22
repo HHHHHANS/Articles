@@ -23,3 +23,23 @@ def resample(df):
 
 
 
++ ### `numpy.transpose()` 改变序列的排列
+[官方文档例子](https://numpy.org/doc/stable/reference/generated/numpy.transpose.html)
+[解析](https://blog.csdn.net/u012762410/article/details/78912667)
+不接收额外参数下，默认是转置操作
+接受了一个list或者tuple作为新坐标，则转化为新坐标系的顺序。
+```python
+>>> x = np.arange(4).reshape((2,2))
+>>>print(x)
+array([[0, 1],
+       [2, 3]])
+```
+```python
+>>> new_x_1 = x.transpose()
+>>> new_x_2 = np.transpose()
+>>> print(new_x_1)
+>>> print(new_x_2)
+[[0 2]
+ [1 3]]
+[[0 2]
+ [1 3]]
