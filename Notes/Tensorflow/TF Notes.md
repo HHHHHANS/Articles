@@ -26,7 +26,12 @@ def augment_data(image_batch):
     return image
 ```
 
-##  Keras - 自定义Layer & Model
+
+
+
+## Keras - 自定义Layer & Model
+
++ ### 自定义Layer
     ##### [tensorflow官方例子](https://tensorflow.google.cn/guide/keras/custom_layers_and_models)
    #####    [GitHub-source](https://github.com/tensorflow/tensorflow/blob/v2.3.1/tensorflow/python/keras/engine/base_layer.py#L104-L3035)
 >***We recommend that descendants of `Layer` implement the following methods***
@@ -61,6 +66,11 @@ class Linear(keras.layers.Layer):
     def call(self, inputs):
         return tf.matmul(inputs, self.w) + self.b
 ```
+
++ ### 自定义Model
+
+
+
 
 ##  Dropout层
     [tensorflow-layers.Dropout](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/Dropout)
@@ -151,9 +161,13 @@ _________________________________________________________________
 
 ```
 
+
+
 ## 时序数据的padding与mask
 
 [官方例子](https://www.tensorflow.org/guide/keras/masking_and_padding)
+
+
 
 ## `tf.reduce_sum()`
 `reduce_sum()` 用于计算张量tensor沿着某一维度的和，可以在求和后降维。[详细解析](https://www.jianshu.com/p/30b40b504bae)
@@ -161,6 +175,54 @@ _________________________________________________________________
 
 关于整数与矩阵操作间的求导以下例子
 [自动微分-sum][pic1] [自动微分-mean][pic2]
+
+
+
+## tf Advanced Automatic Differentiation 高级自动微分
+[官方文档](https://www.tensorflow.org/guide/advanced_autodiff)
+
+
+
+## `tf.keras.layers.BatchNormalization()`
+[tf文档](https://www.tensorflow.org/guide/keras/transfer_learning#freezing_layers_understanding_the_trainable_attribute)
+>
+The only built-in layer that has non-trainable weights is the BatchNormalization layer. It uses non-trainable weights to keep track of the mean and variance of its inputs during training.
+The `BatchNormalization` layer has 2 trainable weights and 2 non-trainable weights.
+
+```python
+>>> layer = keras.layers.BatchNormalization()
+>>> layer.build((None, 4))  # Create the weights
+
+>>> print("weights:", len(layer.weights))
+>>> print("trainable_weights:", len(layer.trainable_weights))
+>>> print("non_trainable_weights:", len(layer.non_trainable_weights))
+weights: 4
+trainable_weights: 2
+non_trainable_weights: 2
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
