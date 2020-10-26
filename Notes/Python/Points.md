@@ -140,3 +140,95 @@ class Test():
 >>> Print(Test.__dict__)
 {'__module__': '__main__', '__init__': <function Test.__init__ at 0x0000000002214CA8>, 'check': <function Test.check at 0x0000000002214C18>, 'put': <staticmethod object at 0x0000000002278648>, 'own': <classmethod object at 0x0000000002278688>, '__dict__': <attribute '__dict__' of 'Test' objects>, '__weakref__': <attribute '__weakref__' of 'Test' objects>, '__doc__': None}
 ```
+
+
+## Property
+[详解](https://www.liaoxuefeng.com/wiki/1016959663602400/1017502538658208)
+```python
+class Student():
+	@property
+	def score(self):
+		return self._score
+	
+	@score.setter
+	def score(self, new_value):
+		[...]
+		self._score = new_value
+```
+只定义`@property`时候，则只读而不可设值
+
+## raise
+[详解](http://c.biancheng.net/view/2360.html)
+通过手动抛出异常的方式可以进行异常检测排查等。
+
+```python
+try:
+    a = input("输入一个数：")
+    #判断用户输入的是否为数字
+    if(not a.isdigit()):
+        raise ValueError("a 必须是数字")
+except ValueError as e:
+    print("引发异常：",repr(e))
+```
+输出为
+```python
+输入一个数：a
+引发异常： ValueError('a 必须是数字')
+```
+
+## sys.stdin 和 sys.stuout
+
+
+
+
+
+## 获取命令行输入
+```python
+# 默认第一个参数为文件名称
+# 之后是各个参数与参数值间以空格分开的所组成的列表
+import sys
+argv_list_command = sys.argv[1:]
+```
+
+## `str.strip()`和`str.replace()`对字符串去除字符
+[详解](https://www.runoob.com/python/att-string-strip.html)    [详解2](https://blog.csdn.net/jerrygaoling/article/details/81051447)
+只能删除开头或结尾的字符，而不对中间匹配的字符删除
+在不指定情况下，删除`\r``\t``\n`和空格
+[指定一个字符或者字符串的情况下](https://blog.csdn.net/u012671171/article/details/52024874)都是拆成单个字符组成的匹配列表，在按顺序对目标字符串的字符进行匹配直到头尾出现了第一个找不到匹配项。
+单独对开头或结尾的指定字符删除则使用`str.lstrip()`或`str.rstrip()`
+对中间的字符进行删除则使用`str.replace('cha','')`
+
+>在python中存在继承了 回车符\r 和 换行符\n 两种标记。
+>\r 代表回车，也就是打印头归位，回到某一行的开头。
+>\n代表换行，就是走纸，下一行。
+>linux只用\n换行。
+>win下用\r\n表示换行。
+
+因此在windows中读取有空格的文件是需要对每一行进行空格的清除来保证不会有多余的空白符占用
+
+
+
+## 控制台重定向输入/输出
+[简析](https://blog.csdn.net/qq_25046261/article/details/78186223)
+```cmd
+>>> # 输入文件到sys.stdin
+>>> python test.py < test.txt
+>>> # 输出文件到sys.stdout(同名文件下旧内容会被覆盖)
+>>> python test.py > test.txt
+>>> # 输出文件到sys.stdout(同名文件下不会被覆盖而是追加)
+>>> python test.py >> test.txt
+```
+
+
+
+## `cls.__new__()`保证单例
+```python
+class Test():
+	def __init__(self):
+		pass
+	# 真正的初始化函数，优于__init__执行
+	def __new__(cls, *args, **kwargs):
+		if not hasattr(Test, "_instance"):
+			Test._instance = object.__new__(cls)
+		return Test._instance
+```
