@@ -222,13 +222,70 @@ argv_list_command = sys.argv[1:]
 
 
 ## `cls.__new__()`保证单例
+[单例实现详解](https://blog.csdn.net/qq_33694648/article/details/104357498)
 ```python
 class Test():
 	def __init__(self):
 		pass
-	# 真正的初始化函数，优于__init__执行
+	# 真正的创建对象函数，优于__init__执行
 	def __new__(cls, *args, **kwargs):
+		# cls指的是本Test类
 		if not hasattr(Test, "_instance"):
 			Test._instance = object.__new__(cls)
+		# 没有返回值则__init__不会执行
 		return Test._instance
 ```
+
+
+
+## re模块
+[正则匹配式](https://www.cnblogs.com/shenjianping/p/11647473.html)    [RUNOOB](https://www.runoob.com/python/python-reg-expressions.html)
+
+
+
+
+
+
+## `operator.itemgetter()`
+[简析](https://www.jianshu.com/p/28d6e5a5b9ed)
+构造一个获取对象的某一些维的数据的函数，参数值为索引和键值
+```python
+>>> from operator import itemgetter
+
+>>> ll = [1, 2, 3]
+>>> dd = {'name': 'mxt', 'age': 18, 'gender': 'female'}
+
+>>> # 定义函数，获取对象第1个域的值
+>>> func1 = itemgetter(1)
+>>> res1 = func1(ll)  
+2 <class 'int'>
+
+>>> # 定义函数，获取对象第0个域和第2个的值
+>>> func2 = itemgetter(0, 2)
+>>> res2 = func2(ll) 
+(1, 3) <class 'tuple'>
+
+>>> func3 = itemgetter('name')
+>>> res3 = func3(dd) 
+mxt <class 'str'>
+
+>>> func4 = itemgetter('name', 'gender')
+>>> res4 = func4(dd)  
+('mxt', 'female') <class 'tuple'>
+```
+**与lambda的作用比较**
+
+```python
+>>> data = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+
+>>>data1 = sorted(data, key=lambda x: (x[1], x[2]))  
+[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
+
+>>> data2 = sorted(data, key=itemgetter(1, 2))  
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+```
+
+
+
+## 面向对象高级编程-类详解
+[详解-博客](https://www.cnblogs.com/shenjianping/p/11050198.html)

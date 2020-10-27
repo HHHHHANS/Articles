@@ -8,3 +8,7 @@
 + [Exploiting structural similarity of log files in fault diagnosis for Web service composition](https://www.sciencedirect.com/science/article/pii/S246823221600007X#bib21)
 + [A Comprehensive Process Similarity Measure
 Based on Models and Logs](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8611068)
+
+
+## 清华netman实验室（裴单团队）论文
++ [ml基础汇总](https://netman.aiops.org/~peidan/ANM2020/2.MachineLearningBasics/LectureCoverage/)
