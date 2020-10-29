@@ -289,3 +289,10 @@ mxt <class 'str'>
 
 ## 面向对象高级编程-类详解
 [详解-博客](https://www.cnblogs.com/shenjianping/p/11050198.html)
+
+
+
+
+## 装饰器 
+[详解](https://www.jianshu.com/p/ee82b941772a)
+[RUNOOB](https://www.runoob.com/w3cnote/python-func-decorators.html)
