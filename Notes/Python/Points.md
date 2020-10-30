@@ -68,7 +68,7 @@ world
 配合`tf.GradientTape().stop_recording()`食用：
 [tf-Advanced Automatic Differentiation高级自动微分](https://www.tensorflow.org/guide/advanced_autodiff)
 **example**
-​```python
+```python
 >>> x = tf.Variable(2.0)
 >>> y = tf.Variable(3.0)
 
@@ -83,13 +83,13 @@ world
 
 >>> print('dz/dx:', grad['x'])  # 2*x => 4
 >>> print('dz/dy:', grad['y'])
-```
-​```python 
 dz/dx: tf.Tensor(4.0, shape=(), dtype=float32)
 dz/dy: None
+
 ```
-`tf.GradientTape().stop_recording()`
 ```python
+`tf.GradientTape().stop_recording()`
+
 #经过装饰后变为含有__enter__和__exit__方法的函数，可通过with调用
 @tf_contextlib.contextmanager
 def stop_recording(self):
@@ -109,7 +109,7 @@ def stop_recording(self):
 ## 多继承与super详解
 [解析](https://blog.csdn.net/qq_26442553/article/details/81775449)
 通过一个类的内置属性查看多继承时候的方法，属性的调用路径
-```python
+​```python
 print(cls.__mro__)
 ```
 
@@ -120,7 +120,7 @@ print(cls.__mro__)
 	
 	
 ## 查看类中包含的函数
-```python
+​```python
 class Test():
     def __init__(self):
         pass
@@ -296,3 +296,10 @@ mxt <class 'str'>
 ## 装饰器 
 [详解](https://www.jianshu.com/p/ee82b941772a)
 [RUNOOB](https://www.runoob.com/w3cnote/python-func-decorators.html)
+
+
+
+## 函数属性
+[详解](https://blog.csdn.net/dongfuguo/article/details/105103472)
+[详解2](http://c.biancheng.net/view/2256.html)
+[详解3](http://www.voidcn.com/article/p-xwfebqbz-bud.html)
