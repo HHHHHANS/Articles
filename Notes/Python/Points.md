@@ -286,6 +286,24 @@ mxt <class 'str'>
 ```
 
 
+## 获取空迭代器的元素
+使用`for * in []/{}:`此时不会进入循环内部，自动跳过
+
+## 空迭代器与None
+空迭代器不为None，类型为各自的迭代类型。
+```python
+>>> a = {}
+>>> type(a)
+<class dict>
+>>> if not a:
+... 	print("empty")
+...
+empty
+>>> if a is not None:
+...		print(" is not None")
+...
+is not None
+```
 
 ## 面向对象高级编程-类详解
 [详解-博客](https://www.cnblogs.com/shenjianping/p/11050198.html)
@@ -296,10 +314,14 @@ mxt <class 'str'>
 ## 装饰器 
 [详解](https://www.jianshu.com/p/ee82b941772a)
 [RUNOOB](https://www.runoob.com/w3cnote/python-func-decorators.html)
-
-
-
+[装饰器接收参数](https://blog.csdn.net/weixin_42948748/article/details/90116904)
+[多个装饰器的执行顺序](https://www.cnblogs.com/azeng1990/p/11192349.html)
+[多个装饰器的执行顺序2](https://www.jb51.net/article/148431.htm)
 ## 函数属性
 [详解](https://blog.csdn.net/dongfuguo/article/details/105103472)
 [详解2](http://c.biancheng.net/view/2256.html)
 [详解3](http://www.voidcn.com/article/p-xwfebqbz-bud.html)
+
+```
+
+```
