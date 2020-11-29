@@ -240,7 +240,8 @@ class Test():
 
 ## re模块
 [正则匹配式](https://www.cnblogs.com/shenjianping/p/11647473.html)    [RUNOOB](https://www.runoob.com/python/python-reg-expressions.html)
-
+汉字匹配： `[\u4e00-\u9fa5]`
+包括日韩汉字匹配：`[\u2E80-\u9FFF]`
 
 
 
