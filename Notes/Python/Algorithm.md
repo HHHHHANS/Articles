@@ -5,4 +5,6 @@
 算法解析
 相似度计算
 
-## 
+##  各类距离公式
++ https://www.jb51.net/article/164673.htm
++ https://www.cnblogs.com/liujinhong/p/6001997.html
