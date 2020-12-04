@@ -47,3 +47,6 @@ array([[0, 1],
 
 
 + ### `matplotlib.pyplot` TSNE 数据降维
+
++ ### 直接对dataframe进行`if`判断报错以及python中`if`的深层理解
+[解读](https://blog.csdn.net/qq_39314099/article/details/101691122)
