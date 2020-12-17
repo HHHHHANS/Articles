@@ -48,3 +48,9 @@
 #### 遇到的困难
 + 数据无标签，难以使用有监督学习的算法
 + 转而考虑使用无监督学习，告警内特征/可构建的特征少，且业务规则抽象，没有一套统一可供参考的标准。
+
+
+## Elasticsearch 与head插件
+[1](https://blog.csdn.net/lh2420124680/article/details/74277380)
+[支持win7的nodejs版本](https://nodejs.org/dist/v12.16.2/)
+[windows-es环境搭建](https://blog.csdn.net/u014236259/article/details/53696133)
