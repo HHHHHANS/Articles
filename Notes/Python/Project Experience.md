@@ -54,3 +54,20 @@
 [1](https://blog.csdn.net/lh2420124680/article/details/74277380)
 [支持win7的nodejs版本](https://nodejs.org/dist/v12.16.2/)
 [windows-es环境搭建](https://blog.csdn.net/u014236259/article/details/53696133)
+
+
+
+
+
+## Tkinter
+[1](https://www.cnblogs.com/lili414/p/8954798.html)
+[滚动条添加方式](https://blog.csdn.net/qq_28123095/article/details/79331756)
+[2](https://blog.csdn.net/ahilll/article/details/81531587)
+[字体格式汇总](https://blog.csdn.net/oh5w6hinug43jvrhhb/article/details/106726048)
+[各类弹出框](https://blog.csdn.net/sinat_39369871/article/details/107184453)
+[radiobutton汇总](https://blog.csdn.net/qq_38970783/article/details/88803931)
+
+## python打包成exe
+[1](https://www.cnblogs.com/mini-monkey/p/11195309.html)
+[2](https://blog.csdn.net/CholenMine/article/details/80964272)
+
