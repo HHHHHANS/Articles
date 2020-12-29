@@ -50,3 +50,5 @@ array([[0, 1],
 
 + ### 直接对dataframe进行`if`判断报错以及python中`if`的深层理解
 [解读](https://blog.csdn.net/qq_39314099/article/details/101691122)
+
++ ### [dataframe按条件取行/列](https://www.cnblogs.com/nxf-rabbit75/p/10105271.html)
