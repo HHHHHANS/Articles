@@ -55,7 +55,8 @@
 [支持win7的nodejs版本](https://nodejs.org/dist/v12.16.2/)
 [windows-es环境搭建](https://blog.csdn.net/u014236259/article/details/53696133)
 
-
++ 安装ik分词版本需要跟ES版本对齐
++ 安装IK分词的目录不能有空格或中文—java.io.filepermission—acess denied
 
 
 
