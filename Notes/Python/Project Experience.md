@@ -57,8 +57,40 @@
 
 + 安装ik分词版本需要跟ES版本对齐
 + 安装IK分词的目录不能有空格或中文—java.io.filepermission—acess denied
-
-
++ 新增mapping
+```
+POST http://localhost:9200/test-index/_mapping
+{
+	"properties" : {
+		"new-type" : {
+			"type": "text",
+            "store": true,
+            "index": true,
+            "analyzer": "standard"
+		}
+	}
+}
+```
++ [更新mapping1](https://www.cnblogs.com/fstimers/articles/11163855.html)
++ [更新mapping2](https://blog.csdn.net/asdasdasd123123123/article/details/87949487)
++ 更新similarity setting
+```
+POST http://localhost:9200/test-index/_close
+PUT http://localhost:9200/test-index/_settings
+{"index" : {
+            "similarity" : {
+              "my_similarity" : {
+                "type" : "BM25",
+                "k1":"1.2",
+                "b":"0.75"
+              }
+            }
+        }
+        }
+POST http://localhost:9200/test-index/_open
+```
++ [更新settings—配置ik分词器](https://www.cnblogs.com/asker009/p/10169250.html)
++ [安装&配置ik分词的问题&扩展字典](https://blog.csdn.net/weixin_44723434/article/details/89888489)
 
 ## Tkinter
 [1](https://www.cnblogs.com/lili414/p/8954798.html)
