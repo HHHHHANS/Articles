@@ -73,24 +73,120 @@ POST http://localhost:9200/test-index/_mapping
 ```
 + [更新mapping1](https://www.cnblogs.com/fstimers/articles/11163855.html)
 + [更新mapping2](https://blog.csdn.net/asdasdasd123123123/article/details/87949487)
-+ 更新similarity setting
++ 更新similarity setting/参数更新同理
+```JS
+Method:POST 
+URL: http://localhost:9200/index-name/_close
+BODY: null
 ```
-POST http://localhost:9200/test-index/_close
-PUT http://localhost:9200/test-index/_settings
+```JS
+Method: PUT 
+URL: http://localhost:9200/index-name/_settings
+BODY: 
 {"index" : {
-            "similarity" : {
-              "my_similarity" : {
-                "type" : "BM25",
-                "k1":"1.2",
-                "b":"0.75"
-              }
+    "similarity" : {
+    	"my_similarity" : {
+    		"type" : "BM25",
+            "k1" : "1.2",
+            "b" : "0.75"
+    		}
+        }
+    }
+}
+```
+```JS
+Method:POST 
+URL: http://localhost:9200/index-name/_open
+BODY: null
+```
++ 设置中配置好`my_similarity`后 在字段创建时候需要声明similarity&analyzer
+```JS
+Method：PUT
+URL：
+	# 旧版中的url
+	http://localhost:9200/index-name/_mapping/_doc
+    # ES-7.9.2中的修正url
+	http://localhost:9200/index-name/_mapping	
+Body：
+{	
+	# 在ES7.9.2中不需要声明mapping，否则会报错
+    "mappings": {
+    	# 在ES7.9.2中不需要声明_doc，否则会报错
+        "_doc": {			
+            "properties": {
+                "id": {
+                    "type": "long",
+                    "store": true,
+                    "index": false
+                },
+                "title": {
+                    "type": "text",
+                    "store": true,
+                    "index": true,
+                    "analyzer": "ik_max_word",
+                    "similarity" : "my_similarity"
+                },
+                "content": {
+                    "type": "text",
+                    "store": true,
+                    "index": true,
+                    "analyzer": "ik_max_word",
+                    "similarity" : "my_similarity"
+                },
+                "content_for_bool_sim": {
+                    "type": "text",
+                    "store": true,
+                    "index": true,
+                    "analyzer": "ik_max_word"
+                }
+                "author": {
+                    "type": "text",
+                    "store": true,
+                    "index": true,
+                    "analyzer": "ik_max_word",
+                    "similarity" : "my_similarity"
+                }
             }
         }
-        }
-POST http://localhost:9200/test-index/_open
+    }
+}
+```
++ 旧索引创建别名（简单的数据迁移可以不需要）
+```JS
+Method：POST
+URL: localhost:9200/_aliases
+Body:
+{
+    "actions" : [
+        { "add" : { "index" : "test_2_from_postman", "alias" : "producer_index" } }
+    ]
+}
+```
++ 往新的索引上进行数据迁移
+```JS
+Method: POST
+URL: localhost:9200/_reindex
+Body:
+{
+    "source": {
+        "index": "test_2_from_postman",
+        # 可以指定进行迁移的字段
+        # 这样可以剔除不需要的字段或者改正字段类型
+        # 需要提前设置好新索引中的mapping,这样才能修改字段类型）
+        "_source":["old_type_1","old_type_2",...]
+    },
+    "dest": {
+        "index": "test_for_reindex"
+    }
+}
+
 ```
 + [更新settings—配置ik分词器](https://www.cnblogs.com/asker009/p/10169250.html)
 + [安装&配置ik分词的问题&扩展字典](https://blog.csdn.net/weixin_44723434/article/details/89888489)
+
++ [python—elasticsearch库使用](https://zhuanlan.zhihu.com/p/95163799)
+
++ [ES—BM25算法与相关度的实际测试](https://zhuanlan.zhihu.com/p/157753976)
 
 ## Tkinter
 [1](https://www.cnblogs.com/lili414/p/8954798.html)
@@ -104,3 +200,7 @@ POST http://localhost:9200/test-index/_open
 [1](https://www.cnblogs.com/mini-monkey/p/11195309.html)
 [2](https://blog.csdn.net/CholenMine/article/details/80964272)
 
+
+```
+
+```
